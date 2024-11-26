@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chubby Tea</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      max-width: 700px;
+      background-color: #016936; /* Lighter green background */
+      color: #FFD700;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    .output {
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #222;
+      color: #FFD700;
+    }
+    a {
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chubby Tea Review</h1>
+  <p>Click the button below to generate a review. Use the links to leave a review on Google or Yelp!</p>
+
+  <button onclick="generateReview()">Generate a Review</button>
+  <button onclick="copyToClipboard()">Copy to Clipboard</button>
+  <div id="reviewOutput" class="output">Your review will appear here.</div>
+
+  <a href="https://gorate.biz/Bobachris" target="_blank">Leave a Google Review</a>
+  <a href="https://www.yelp.com/writeareview/biz/38eXlFZ8UD_ExersL2-Smg?review_origin=review-feed-war-widget" target="_blank">Leave a Yelp Review</a>
+
+  <script>
+    function generateReview() {
+      const reviews = [
+        "Thanks Danny for recommending the Strawberry Explosion from Chubby Tea! The drink was a perfect mix of fruity sweetness and slightly herbal. It was very refreshing and really paired well with my dinner. The atmosphere at Chubby Tea was lively, and the staff was super friendly and efficient. I’ll definitely be back to try more recommendations!",
+        "Thanks Danny for recommending the Lemon Explosion at Chubby Tea! The tangy citrus flavor was so refreshing, especially on a hot day. The drink was beautifully served with just the right amount of ice, and the presentation was amazing. The service was quick, and the staff was very friendly. They even put it in a nice bag. Highly recommended!",
+        "Danny suggested the Triple Milk Tea at Chubby Tea, and it did not disappoint! The tea was incredibly smooth, with a balanced flavor that wasn’t overly sweet. I think this will be my new go-to drink instead of Thai tea. I appreciated the clean and welcoming environment, and the menu had so many unique options to choose from!",
+        "Danny recommended the Green Milk Tea, and it was absolutely delicious! The tea had a rich flavor with a hint of jasmine that paired well with the creamy texture. The shop itself is a hidden gem, with plenty of seating and a great ambiance. The staff was knowledgeable about the menu and made me feel welcome. Can’t wait to visit again!",
+        "I tried the Strawberry Yogurt at Chubby Tea after Danny recommended it, and I loved it! The yogurt was fresh and tangy, complemented by a sweet strawberry flavor. The drink was served in a cute cup, and the attention to detail was impressive. The staff was attentive, and the experience was fantastic!",
+        "Danny told me to try the Strawberry Fresh Milk at Chubby Tea, and it was perfect! The milk was creamy and fresh, with a natural sweetness from the strawberries. It was very filling and tasted so delicious. The shop’s interior was modern and clean, and the service was exceptional. I’ll definitely recommend this to friends!",
+        "Danny recommended the Strawberry Oolong from Chubby Tea, and it was incredible! The combination of strawberry and herbal oolong was vibrant and full of flavor. The boba added a fun texture, and the drink itself was beautifully presented. The staff was friendly and quick, making the whole experience enjoyable. I can’t wait to explore more of the menu!",
+        "After hearing Danny’s suggestion, I tried the Taro Milk Tea at Chubby Tea, and it was amazing! The taro flavor was rich and earthy, with a creamy base that made it so satisfying. The portion size was generous, and the boba pearls were just the right consistency. The environment was inviting, and the customer service was top-notch!"
+      ];
+
+      const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
+      document.getElementById("reviewOutput").textContent = randomReview;
+    }
+
+    function copyToClipboard() {
+      const reviewText = document.getElementById("reviewOutput").textContent;
+      if (reviewText && reviewText !== "Your review will appear here.") {
+        navigator.clipboard.writeText(reviewText).then(() => {
+          alert("Review copied to clipboard!");
+        }).catch(err => {
+          console.error("Failed to copy:", err);
+        });
+      } else {
+        alert("No review to copy! Generate a review first.");
+      }
+    }
+  </script>
+
+</body>
+</html>
