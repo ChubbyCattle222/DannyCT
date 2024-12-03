@@ -81,56 +81,67 @@
   </ul>
   
   <script>
-    // Components with a wide variety of phrasing, tones, and perspectives
+    // Large phrase pools with expanded variety
     const openers = [
-      "Danny C told me about Chubby Tea, and I’m so grateful he did!",
-      "A good friend, Danny C, recommended Chubby Tea, and wow, it was worth it!",
-      "Never thought I’d enjoy tea this much until Danny C suggested Chubby Tea.",
-      "Chubby Tea was highly recommended by Danny C. I decided to give it a shot.",
-      "Danny C swore by Chubby Tea, and now I see why.",
-      "At the urging of Danny C, I checked out Chubby Tea. Fantastic experience!"
+      "Danny C insisted I check out Chubby Tea, and I'm thrilled I did.",
+      "Chubby Tea came highly recommended by Danny C, and it did not disappoint.",
+      "If it wasn't for Danny C, I might have missed out on Chubby Tea.",
+      "Danny C's rave reviews led me to Chubby Tea, and it exceeded my expectations.",
+      "Thanks to Danny C, I discovered a gem in Chubby Tea.",
+      "My friend Danny C swore by Chubby Tea, and he was absolutely right.",
+      "Danny C urged me to try Chubby Tea, and I'm glad I listened.",
+      "I finally gave Chubby Tea a shot after Danny C kept talking about it.",
+      "Chubby Tea was Danny C's recommendation, and it was spot on.",
+      "I owe Danny C for pointing me to Chubby Tea.",
+      "Danny C called Chubby Tea a must-visit, and he wasn’t wrong.",
+      "After hearing so much about Chubby Tea from Danny C, I had to see for myself.",
+      "Danny C couldn't stop praising Chubby Tea, so I had to try it.",
+      "I tried Chubby Tea on Danny C's recommendation, and it was a delightful experience."
     ];
 
     const descriptions = [
-      "The environment was warm and inviting, perfect for tea lovers.",
-      "I found the staff to be incredibly knowledgeable about their offerings.",
-      "The service was fast and efficient, leaving no room for complaints.",
-      "The flavors were mind-blowingly good, a true treat for the senses.",
-      "Each drink was made with precision, highlighting the attention to detail.",
-      "Their creative menu is something I haven’t seen elsewhere, making it a standout."
+      "The drinks were crafted with care and precision.",
+      "The flavors were bold, fresh, and memorable.",
+      "The staff was kind, professional, and extremely attentive.",
+      "The ambiance was cozy and perfect for relaxing.",
+      "Every drink was made to perfection.",
+      "The variety of drinks is unmatched.",
+      "The presentation of the drinks was stunning.",
+      "The flavors were rich and left me wanting more.",
+      "The ingredients were clearly high-quality and fresh.",
+      "The menu had something for everyone."
     ];
 
     const specifics = [
-      "I absolutely loved the Mango Coconut Slushy, refreshing and smooth.",
-      "The Taro topping added a delightful twist to my Thai Tea.",
-      "The Grapefruit Kumquat Green Tea was the perfect balance of zesty and sweet.",
-      "Their Milk Tea was rich, creamy, and perfectly brewed.",
-      "The Herbal Hot Tea gave me the cozy vibes I was looking for.",
-      "The Green Bean topping was a surprisingly delicious addition to my drink."
+      "The Milk Tea was smooth, creamy, and perfectly balanced.",
+      "The Mango Coconut Slushy was an absolute delight.",
+      "The Thai Tea was refreshing and not overly sweet.",
+      "The Herbal Hot Tea was exactly what I needed on a chilly day.",
+      "The Grapefruit Kumquat Green Tea had a wonderful citrusy tang.",
+      "The Taro topping added a fun and unique texture to my drink.",
+      "The Green Bean topping was a surprisingly tasty addition.",
+      "The Guava Kumquat Green Tea was unlike anything I’ve ever tasted.",
+      "The Coconut Slushy was like a mini tropical escape in a cup."
     ];
 
     const closers = [
-      "I’ll definitely be coming back for more.",
-      "Highly recommend this spot to anyone who enjoys tea.",
-      "Don’t miss out if you’re nearby. Totally worth the visit!",
-      "Would I return? Absolutely, in a heartbeat.",
-      "My friends and I are already planning our next trip here."
+      "I'll be returning soon to try even more drinks from the menu.",
+      "This is hands-down my new favorite tea spot.",
+      "I'll definitely be telling my friends about this place.",
+      "Thanks to Danny C, I've found a tea shop I truly love.",
+      "I'm already planning my next visit to Chubby Tea.",
+      "If you're a tea lover, you absolutely need to visit Chubby Tea.",
+      "This spot deserves all the praise it gets."
     ];
 
-    // Infinite variety with random complexity
     function generateReview() {
-      // Dynamically create a unique review
       const opener = openers[Math.floor(Math.random() * openers.length)];
       const description = descriptions[Math.floor(Math.random() * descriptions.length)];
       const specific = specifics[Math.floor(Math.random() * specifics.length)];
       const closer = closers[Math.floor(Math.random() * closers.length)];
 
-      // Random sentence complexity
-      const complexStructure = Math.random() > 0.5;
-      const review = complexStructure
-        ? `${opener} ${description}. ${specific}. ${closer}`
-        : `${opener} I found ${description}. ${specific} stands out. ${closer}`;
-
+      // Random complexity
+      const review = `${opener} ${description} ${specific} ${closer}`;
       document.getElementById("reviewOutput").textContent = review;
     }
 
