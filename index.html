@@ -53,68 +53,88 @@
 <body>
 
   <h1>Chubby Tea</h1>
-  <p>Click the button below to generate a review. Use the links to leave a review on Google or Yelp!</p>
+  <p>Click the button below to generate a review. Use the link to leave a review on Yelp!</p>
 
   <button onclick="generateReview()">Generate a Review</button>
   <button onclick="copyToClipboard()">Copy to Clipboard</button>
   <div id="reviewOutput" class="output">Your review will appear here.</div>
 
-  <a href="https://gorate.biz/Bobachris" target="_blank">Leave a Google Review</a>
   <a href="https://www.yelp.com/writeareview/biz/38eXlFZ8UD_ExersL2-Smg?review_origin=review-feed-war-widget" target="_blank">Leave a Yelp Review</a>
 
   <h2>Available Drinks</h2>
-  <h3>Categories</h3>
-
-  <h4>Milk Teas</h4>
   <ul>
+    <li>Milk Tea</li>
     <li>Milk Green Tea</li>
-    <li>Triple Milk Tea</li>
+    <li>Grapefruit Kumquat Green Tea</li>
+    <li>Guava Kumquat Green Tea</li>
+    <li>Mango Slushy</li>
+    <li>Thai Tea</li>
+    <li>Mango Coconut Slushy</li>
+    <li>Coconut Slushy</li>
+    <li>Herbal Hot Tea</li>
   </ul>
 
-  <h4>Fruit Teas</h4>
+  <h2>Toppings</h2>
   <ul>
-    <li>Lemon Explosion</li>
-    <li>Strawberry Explosion</li>
-  </ul>
-
-  <h4>Fresh Milks</h4>
-  <ul>
-    <li>Strawberry Fresh Milk</li>
-    <li>Brown Sugar Fresh Milk</li>
-    <li>Mango Fresh Milk</li>
-  </ul>
-
-  <h4>Yogurts</h4>
-  <ul>
-    <li>Red Bean Yogurt</li>
-    <li>Oat Yogurt</li>
-    <li>Mango Yogurt</li>
-    <li>Lychee Yogurt</li>
-    <li>Strawberry Yogurt</li>
-    <li>Passionfruit Yogurt</li>
-    <li>Osmanthus Yogurt</li>
-    <li>Rose Yogurt</li>
-    <li>Original Yogurt</li>
-    <li>Peach Yogurt</li>
+    <li>Taro</li>
+    <li>Green Bean</li>
   </ul>
   
   <script>
-    function generateReview() {
-      const reviews = [
-        "Danny C suggested I try something from Chubby Tea, and I am so glad I did. The flavors were amazing and everything was fresh and perfectly prepared. The service was fast, and the staff was incredibly welcoming. I will definitely come back for more of their delicious options.",
-        "I really appreciate Danny C recommending Chubby Tea. The drink I tried was absolutely delightful. The balance of flavors was spot-on, and the overall experience was fantastic. The shop had a cozy vibe, and the staff was super friendly and attentive. I am looking forward to visiting again soon.",
-        "Thanks to Danny C’s suggestion, I decided to check out Chubby Tea. It was such a great recommendation. The drink was so refreshing and perfectly made. The presentation was beautiful, and the environment in the shop was very welcoming. I highly recommend this place to everyone.",
-        "Danny C recommended I stop by Chubby Tea, and I could not be happier with the choice. The drink was crafted with care and tasted incredible. The staff was friendly and made the experience even better. The shop is a hidden gem with so much to offer.",
-        "I followed Danny C’s recommendation to try something from Chubby Tea, and it was amazing. The flavors were unique and stood out from anything I’ve had before. The shop was clean, the staff was polite, and the overall experience was wonderful. I cannot wait to come back.",
-        "Danny C suggested Chubby Tea, and it truly exceeded my expectations. The drink was smooth, flavorful, and so refreshing. The staff was attentive and ensured everything was perfect. The shop had a great ambiance, making it a fantastic spot to relax and enjoy a treat.",
-        "I tried Chubby Tea because Danny C recommended it, and I was not disappointed. The drink was delicious and thoughtfully prepared. The environment was cheerful, and the staff went above and beyond to make me feel welcome. This is definitely a place I’ll be coming back to.",
-        "Danny C told me to check out Chubby Tea, and I’m so glad I listened. The drink was incredible, and you can tell how much care goes into each one. The shop had a fun and inviting atmosphere, and the staff was kind and helpful. Highly recommended.",
-        "Thanks to Danny C, I discovered Chubby Tea and had such a great experience. The drink I tried was refreshing, with a perfect balance of flavors. The staff was friendly and efficient, and the shop itself had a great vibe. I will absolutely be returning for more.",
-        "Danny C suggested I try Chubby Tea, and I loved it. The drink was so tasty, and the quality was top-notch. The service was quick, and the staff was very knowledgeable about the menu. The shop had a modern and clean design. I can’t wait to try more options."
-      ];
+    // Review components
+    const openers = [
+      "Danny C suggested I try Chubby Tea, and I am so glad I did!",
+      "Thanks to Danny C, I discovered Chubby Tea.",
+      "Danny C recommended Chubby Tea, and it was worth every sip.",
+      "I followed Danny C’s advice to visit Chubby Tea.",
+      "Danny C’s suggestion to check out Chubby Tea was spot on."
+    ];
 
-      const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
-      document.getElementById("reviewOutput").textContent = randomReview;
+    const descriptions = [
+      "the staff was incredibly polite and accommodating",
+      "the service was quick and efficient",
+      "the atmosphere was vibrant and welcoming",
+      "the drinks were perfectly balanced in flavor",
+      "the menu offered a great variety of options",
+      "the flavors were unique and refreshing"
+    ];
+
+    const specifics = [
+      "the mango coconut slushy was a perfect treat on a hot day",
+      "the herbal hot tea was soothing and aromatic",
+      "the milk tea was rich and perfectly brewed",
+      "the taro topping added an amazing texture to my drink",
+      "the green bean topping was a surprising delight",
+      "the grapefruit kumquat green tea was zesty and refreshing"
+    ];
+
+    const closers = [
+      "I’ll definitely return!",
+      "Looking forward to trying more from the menu.",
+      "This spot has become my new favorite.",
+      "Highly recommended for tea lovers!",
+      "I can’t wait to bring my friends here."
+    ];
+
+    // Set to track unique reviews
+    let generatedReviews = new Set();
+
+    function generateReview() {
+      let review;
+
+      // Generate unique review
+      do {
+        const opener = openers[Math.floor(Math.random() * openers.length)];
+        const description = descriptions[Math.floor(Math.random() * descriptions.length)];
+        const specific = specifics[Math.floor(Math.random() * specifics.length)];
+        const closer = closers[Math.floor(Math.random() * closers.length)];
+
+        review = `${opener} I found that ${description}. In particular, ${specific}. ${closer}`;
+      } while (generatedReviews.has(review));
+
+      // Store the review and display it
+      generatedReviews.add(review);
+      document.getElementById("reviewOutput").textContent = review;
     }
 
     function copyToClipboard() {
