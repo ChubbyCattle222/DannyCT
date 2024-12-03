@@ -81,59 +81,56 @@
   </ul>
   
   <script>
-    // Review components
+    // Components with a wide variety of phrasing, tones, and perspectives
     const openers = [
-      "Danny C suggested I try Chubby Tea, and I am so glad I did!",
-      "Thanks to Danny C, I discovered Chubby Tea.",
-      "Danny C recommended Chubby Tea, and it was worth every sip.",
-      "I followed Danny C’s advice to visit Chubby Tea.",
-      "Danny C’s suggestion to check out Chubby Tea was spot on."
+      "Danny C told me about Chubby Tea, and I’m so grateful he did!",
+      "A good friend, Danny C, recommended Chubby Tea, and wow, it was worth it!",
+      "Never thought I’d enjoy tea this much until Danny C suggested Chubby Tea.",
+      "Chubby Tea was highly recommended by Danny C. I decided to give it a shot.",
+      "Danny C swore by Chubby Tea, and now I see why.",
+      "At the urging of Danny C, I checked out Chubby Tea. Fantastic experience!"
     ];
 
     const descriptions = [
-      "the staff was incredibly polite and accommodating",
-      "the service was quick and efficient",
-      "the atmosphere was vibrant and welcoming",
-      "the drinks were perfectly balanced in flavor",
-      "the menu offered a great variety of options",
-      "the flavors were unique and refreshing"
+      "The environment was warm and inviting, perfect for tea lovers.",
+      "I found the staff to be incredibly knowledgeable about their offerings.",
+      "The service was fast and efficient, leaving no room for complaints.",
+      "The flavors were mind-blowingly good, a true treat for the senses.",
+      "Each drink was made with precision, highlighting the attention to detail.",
+      "Their creative menu is something I haven’t seen elsewhere, making it a standout."
     ];
 
     const specifics = [
-      "the mango coconut slushy was a perfect treat on a hot day",
-      "the herbal hot tea was soothing and aromatic",
-      "the milk tea was rich and perfectly brewed",
-      "the taro topping added an amazing texture to my drink",
-      "the green bean topping was a surprising delight",
-      "the grapefruit kumquat green tea was zesty and refreshing"
+      "I absolutely loved the Mango Coconut Slushy, refreshing and smooth.",
+      "The Taro topping added a delightful twist to my Thai Tea.",
+      "The Grapefruit Kumquat Green Tea was the perfect balance of zesty and sweet.",
+      "Their Milk Tea was rich, creamy, and perfectly brewed.",
+      "The Herbal Hot Tea gave me the cozy vibes I was looking for.",
+      "The Green Bean topping was a surprisingly delicious addition to my drink."
     ];
 
     const closers = [
-      "I’ll definitely return!",
-      "Looking forward to trying more from the menu.",
-      "This spot has become my new favorite.",
-      "Highly recommended for tea lovers!",
-      "I can’t wait to bring my friends here."
+      "I’ll definitely be coming back for more.",
+      "Highly recommend this spot to anyone who enjoys tea.",
+      "Don’t miss out if you’re nearby. Totally worth the visit!",
+      "Would I return? Absolutely, in a heartbeat.",
+      "My friends and I are already planning our next trip here."
     ];
 
-    // Set to track unique reviews
-    let generatedReviews = new Set();
-
+    // Infinite variety with random complexity
     function generateReview() {
-      let review;
+      // Dynamically create a unique review
+      const opener = openers[Math.floor(Math.random() * openers.length)];
+      const description = descriptions[Math.floor(Math.random() * descriptions.length)];
+      const specific = specifics[Math.floor(Math.random() * specifics.length)];
+      const closer = closers[Math.floor(Math.random() * closers.length)];
 
-      // Generate unique review
-      do {
-        const opener = openers[Math.floor(Math.random() * openers.length)];
-        const description = descriptions[Math.floor(Math.random() * descriptions.length)];
-        const specific = specifics[Math.floor(Math.random() * specifics.length)];
-        const closer = closers[Math.floor(Math.random() * closers.length)];
+      // Random sentence complexity
+      const complexStructure = Math.random() > 0.5;
+      const review = complexStructure
+        ? `${opener} ${description}. ${specific}. ${closer}`
+        : `${opener} I found ${description}. ${specific} stands out. ${closer}`;
 
-        review = `${opener} I found that ${description}. In particular, ${specific}. ${closer}`;
-      } while (generatedReviews.has(review));
-
-      // Store the review and display it
-      generatedReviews.add(review);
       document.getElementById("reviewOutput").textContent = review;
     }
 
